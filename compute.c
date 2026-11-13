@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   compute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: habretag <habretag@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: esaillan <esaillan@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 11:13:26 by habretag          #+#    #+#             */
-/*   Updated: 2026/11/11 13:54:51 by habretag         ###   ########lyon.fr   */
+/*   Updated: 2026/11/13 14:16:13 by esaillan         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@ t_result	*compute_algo(t_stack *a)
 	if (dis < 0.2)
 		return (simple_algo(a));
 	else if (dis >= 0.5)
-		// complex algo
-		return (NULL);
+		return (complex_algo(a));
 	else
 		return (medium_algo(a));
 }

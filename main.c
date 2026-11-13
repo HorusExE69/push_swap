@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: habretag <habretag@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: esaillan <esaillan@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 11:17:20 by habretag          #+#    #+#             */
-/*   Updated: 2026/11/12 17:16:20 by habretag         ###   ########lyon.fr   */
+/*   Updated: 2026/11/13 15:31:15 by esaillan         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ static t_result	*choose_algo(t_stack *a, int flag)
 		return (simple_algo(a));
 	if (flag == 1)
 		return (medium_algo(a));
-	// if (flag == 2)
-	// 	return (complex_algo(a));
+	if (flag == 2)
+		return (complex_algo(a));
 	if (flag == 3)
 		return (compute_algo(a));
 	return (NULL);
