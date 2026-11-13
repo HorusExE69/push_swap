@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: habretag <habretag@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: esaillan <esaillan@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 11:19:12 by habretag          #+#    #+#             */
-/*   Updated: 2026/11/12 14:49:52 by habretag         ###   ########lyon.fr   */
+/*   Updated: 2026/11/13 11:10:02 by esaillan         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int			get_max_index(t_stack *b);
 void		print_t_stack(t_result *result);
 
 // Utils functions
+void		*ft_realloc(void *ptr, size_t old_size, size_t new_size);
 char		**ft_substr(char **s, unsigned int start, size_t len);
 char		*ft_strdup(const char *s);
 size_t		ft_strlen(const char *s);
