@@ -1,4 +1,4 @@
-CFLAGS		= -Wextra -Wall -Werror -MD --save-temps
+CFLAGS		= -Wextra -Wall -Werror -g3
 NAME		= push_swap
 SRCS		= main.c compute.c simple_algorithm.c mid_algo.c complex_algo.c \
 			  bucket.c init.c check_input.c \

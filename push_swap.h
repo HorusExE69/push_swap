@@ -6,7 +6,7 @@
 /*   By: habretag <habretag@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 11:19:12 by habretag          #+#    #+#             */
-/*   Updated: 2026/11/13 15:31:38 by esaillan         ###   ########lyon.fr   */
+/*   Updated: 2026/11/13 17:15:36 by habretag         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,10 @@ int			check_input(int argc, char **argv);
 void		print_t_stack(t_result *result);
 
 // Utils functions
-char		**ft_substr(char **s, unsigned int start, size_t len);
-char		*ft_strdup(const char *s);
-size_t		ft_strlen(const char *s);
 int			ft_strcmp(char *s1, char *s2);
-void		ft_bzero(void *s, size_t n);
-void		*ft_calloc(size_t nmemb, size_t size);
-void		*ft_memset(void *s, int c, size_t n);
+void		ft_bzero(void *s, size_t n); // UTILISER DANS CALLOC
+void		*ft_calloc(size_t nmemb, size_t size); // PAS UTILISER
+void		*ft_memset(void *s, int c, size_t n); // UTILISER DANS BZERO/CALLOC
 int			ft_isnumber(char *str);
 int			ft_atoi(const char *nptr);
 void		ft_incr(t_result *res, int *j, t_operators operator);

@@ -6,7 +6,7 @@
 /*   By: habretag <habretag@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 13:26:46 by habretag          #+#    #+#             */
-/*   Updated: 2026/11/13 14:47:19 by habretag         ###   ########lyon.fr   */
+/*   Updated: 2026/11/13 17:13:45 by habretag         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	is_duplicate(int i, char **argv)
 	j = 0;
 	while (j < i)
 	{
-		if (atoi(argv[j]) == atoi(argv[i]))
+		if (ft_atoi(argv[j]) == ft_atoi(argv[i]))
 			return (1);
 		j++;
 	}
