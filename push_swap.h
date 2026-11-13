@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: habretag <habretag@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: esaillan <esaillan@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 11:19:12 by habretag          #+#    #+#             */
-/*   Updated: 2026/11/12 14:49:52 by habretag         ###   ########lyon.fr   */
+/*   Updated: 2026/11/13 11:59:46 by esaillan         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void		*ft_calloc(size_t nmemb, size_t size);
 void		*ft_memset(void *s, int c, size_t n);
 int			ft_isnumber(char *str);
 int			ft_atoi(const char *nptr);
+void		ft_incr(t_result *res, int *j, t_operators operator);
 
 // Bucket functions
 int			get_bucket_count(int size);
@@ -67,12 +68,12 @@ int			ft_popfront(t_stack *stack);
 void		ft_pushfront(t_stack *stack, int new);
 
 // Operators
-t_op_code	ft_operator(t_stack *a, t_stack *b, t_operators operator, t_result *res, int *j);
+t_op_code	ft_operator(t_stack *a, t_stack *b, t_operators operator);
 t_op_code	ft_sa(t_stack *a);
 t_op_code	ft_sb(t_stack *b);
 t_op_code	ft_ss(t_stack *a, t_stack *b);
-t_op_code	ft_pa(t_stack *a, t_stack *b, t_result *res, int *j);
-t_op_code	ft_pb(t_stack *a, t_stack *b, t_result *res, int *j);
+t_op_code	ft_pa(t_stack *a, t_stack *b);
+t_op_code	ft_pb(t_stack *a, t_stack *b);
 t_op_code	ft_ra(t_stack *a);
 t_op_code	ft_rb(t_stack *b);
 t_op_code	ft_rr(t_stack *a, t_stack *b);

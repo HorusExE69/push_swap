@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils5.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: habretag <habretag@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: esaillan <esaillan@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 14:46:36 by habretag          #+#    #+#             */
-/*   Updated: 2026/11/12 17:18:26 by habretag         ###   ########lyon.fr   */
+/*   Updated: 2026/11/13 12:05:21 by esaillan         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,8 @@ static void	rotate_max_to_top(t_stack *b, t_result *res, int *j)
 	{
 		while (max_index > 0)
 		{
-			ft_rb(b);
-			res->ope[(*j)++] = RB;
-			res->nb++;
+			ft_operator(NULL, b, RB);
+			ft_incr(res, j, RB);
 			max_index--;
 		}
 	}
@@ -80,9 +79,8 @@ static void	rotate_max_to_top(t_stack *b, t_result *res, int *j)
 	{
 		while (max_index < b->size)
 		{
-			ft_rrb(b);
-			res->ope[(*j)++] = RRB;
-			res->nb++;
+			ft_operator(NULL, b, RRB);
+			ft_incr(res, j, RRB);
 			max_index++;
 		}
 	}
@@ -96,6 +94,7 @@ void	collect_stack(t_stack *a, t_stack *b, t_result *res)
 	while (b->size > 0)
 	{
 		rotate_max_to_top(b, res, &j);
-		ft_pa(a, b, res, &j);
+		ft_operator(a, b, PA);
+		ft_incr(res, &j, PA);
 	}
 }

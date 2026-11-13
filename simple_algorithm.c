@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simple_algorithm.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: habretag <habretag@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: esaillan <esaillan@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 14:47:06 by esaillan          #+#    #+#             */
-/*   Updated: 2026/11/11 14:04:42 by habretag         ###   ########lyon.fr   */
+/*   Updated: 2026/11/13 11:58:33 by esaillan         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,15 @@ static int	first_loop(t_stack *a, t_stack *b, t_result *res)
 		{
 			if (a->stack[0] > a->stack[1])
 			{
-				ft_sa(a);
-				res->ope[j++] = SA;
+				ft_operator(a, b, SA);
+				ft_incr(res, &j, SA);
 			}
-			ft_ra(a);
-			res->ope[j++] = RA;
+			ft_operator(a, b, RA);
+			ft_incr(res, &j, RA);
 			i++;
 		}
-		ft_pb(a, b, res, &j);
+		ft_operator(a, b, PB);
+		ft_incr(res, &j, PB);
 	}
 	return (j);
 }
@@ -53,9 +54,10 @@ static t_result	*parse_and_sort(t_stack *a)
 	j = first_loop(a, b, res);
 	while (b->size > 0)
 	{
-		ft_pa(a, b, res, &j);
-		ft_ra(a);
-		res->ope[j++] = RA;
+		ft_operator(a, b, PA);
+		ft_incr(res, &j, PA);
+		ft_operator(a, b, RA);
+		ft_incr(res, &j, RA);
 	}
 	res->nb = j;
 	return (free(b->stack), free(b), res);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operators_rr_.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: habretag <habretag@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: esaillan <esaillan@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 14:30:31 by esaillan          #+#    #+#             */
-/*   Updated: 2026/11/11 10:49:01 by habretag         ###   ########lyon.fr   */
+/*   Updated: 2026/11/13 11:40:14 by esaillan         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,5 @@ t_op_code	ft_rrb(t_stack *b)
 
 t_op_code	ft_rrr(t_stack *a, t_stack *b)
 {
-	if (ft_rra(a) == GOOD)
-	{
-		if (ft_rrb(b) == GOOD)
-			return (GOOD);
-		return (A_GOOD);
-	}
-	if (ft_rrb(b) == GOOD)
-		return (B_GOOD);
-	return (ERROR);
+	return (ft_rra(a) == GOOD || ft_rrb(b) == GOOD);
 }

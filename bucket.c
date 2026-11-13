@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bucket.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: habretag <habretag@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: esaillan <esaillan@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 14:18:59 by habretag          #+#    #+#             */
-/*   Updated: 2026/11/12 17:18:56 by habretag         ###   ########lyon.fr   */
+/*   Updated: 2026/11/13 12:00:47 by esaillan         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,13 @@ void	push_bucket(t_stack *a, t_stack *b, t_result *res,
 	{
 		if (is_in_bucket(a, bucket))
 		{
-			ft_pb(a, b, res, &j);
-			pushed++;
+			if (ft_operator(a, b, PB) == GOOD)
+			{
+				ft_incr(res, &j, PB);
+				pushed++;
+			}
 		}
-		else
-		{
-			ft_ra(a);
-			res->ope[j++] = RA;
-			res->nb++;
-		}
+		else if (ft_operator(a, b, RA) == GOOD)
+			ft_incr(res, &j, RA);
 	}
 }

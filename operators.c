@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   operators.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: habretag <habretag@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: esaillan <esaillan@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 14:32:49 by esaillan          #+#    #+#             */
-/*   Updated: 2026/11/11 10:58:35 by habretag         ###   ########lyon.fr   */
+/*   Updated: 2026/11/13 11:46:47 by esaillan         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_op_code	ft_operator(t_stack *a, t_stack *b, t_operators operator, t_result *res, int *j)
+t_op_code	ft_operator(t_stack *a, t_stack *b, t_operators operator)
 {
 	if (operator == SA)
 		return (ft_sa(a));
@@ -21,9 +21,9 @@ t_op_code	ft_operator(t_stack *a, t_stack *b, t_operators operator, t_result *re
 	else if (operator == SS)
 		return (ft_ss(a, b));
 	else if (operator == PA)
-		return (ft_pa(a, b, res, j));
+		return (ft_pa(a, b));
 	else if (operator == PB)
-		return (ft_pb(a, b, res, j));
+		return (ft_pb(a, b));
 	else if (operator == RA)
 		return (ft_ra(a));
 	else if (operator == RB)

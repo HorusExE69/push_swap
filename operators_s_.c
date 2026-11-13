@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operators_s_.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: habretag <habretag@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: esaillan <esaillan@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 11:50:37 by esaillan          #+#    #+#             */
-/*   Updated: 2026/11/10 15:17:48 by habretag         ###   ########lyon.fr   */
+/*   Updated: 2026/11/13 11:41:07 by esaillan         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,5 @@ t_op_code	ft_sb(t_stack *b)
 
 t_op_code	ft_ss(t_stack *a, t_stack *b)
 {
-	if (ft_sa(a) == GOOD)
-	{
-		if (ft_sb(b) == GOOD)
-			return (GOOD);
-		return (A_GOOD);
-	}
-	if (ft_sb(b) == GOOD)
-		return (B_GOOD);
-	return (ERROR);
+	return (ft_sa(a) == GOOD || ft_sb(b) == GOOD);
 }

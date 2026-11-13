@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   result.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: habretag <habretag@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: esaillan <esaillan@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 14:30:53 by habretag          #+#    #+#             */
-/*   Updated: 2026/11/10 15:42:31 by habretag         ###   ########lyon.fr   */
+/*   Updated: 2026/11/13 11:33:45 by esaillan         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: habretag <habretag@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: esaillan <esaillan@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 12:25:20 by esaillan          #+#    #+#             */
-/*   Updated: 2026/11/12 14:49:28 by habretag         ###   ########lyon.fr   */
+/*   Updated: 2026/11/13 12:01:07 by esaillan         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,10 @@ int	is_sorted(t_stack *a)
 		i++;
 	}
 	return (1);
+}
+
+void	ft_incr(t_result *res, int *j, t_operators operator)
+{
+	res->ope[(*j)++] = operator;
+	res->nb++;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operators.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: habretag <habretag@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: esaillan <esaillan@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 11:39:29 by esaillan          #+#    #+#             */
-/*   Updated: 2026/11/10 14:42:09 by habretag         ###   ########lyon.fr   */
+/*   Updated: 2026/11/13 11:38:44 by esaillan         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ typedef enum e_operators
 typedef enum e_op_code
 {
 	ERROR,
-	A_GOOD,
-	B_GOOD,
 	GOOD
 }	t_op_code;
 
