@@ -1,5 +1,7 @@
 push_swap_visualizer/
 en.subject.pdf
 push_swap
+testeur.py
+.vscode/
 
 *.o

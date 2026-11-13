@@ -12,6 +12,7 @@
 
 #include "push_swap.h"
 #include "ft_printf.h"
+#include <unistd.h>
 
 static t_stack	*check_no_flags(int argc, char **argv)
 {
@@ -46,6 +47,8 @@ static t_stack	*check_flags(int argc, char **argv, int *flag)
 		*flag = 2;
 	else if (ft_strcmp(argv[1], "--adaptative") == 0)
 		*flag = 3;
+	else
+		return (NULL);
 	if (!argv[2])
 		return (NULL);
 	return (check_no_flags(argc - 2, argv + 2));
@@ -71,19 +74,22 @@ int	main(int argc, char **argv)
 	t_result	*res;
 
 	flag = 3;
+	a = NULL;
 	if (argc < 2)
-		return (1);
-	if (argv[1][0] == '-' && argv[1][1] == '-')
+		return (write(2,"Error\n", 6), 1);
+	if (argv[1][0] == '-' && argv[1][1] == '-' && check_input(argc - 2, argv + 2))
 		a = check_flags(argc, argv, &flag);
-	else
+	else if (check_input(argc - 1, argv + 1))
 		a = check_no_flags(argc - 1, argv + 1);
 	if (!a)
-		return (1);
+		return (write(2,"Error\n", 6), 1);
 	if (!a->stack)
-		return (free(a), 1);
+		return (write(2,"Error\n", 6), free(a), 1);
+	if (is_sorted(a))
+		return (free(a->stack), free(a), 0);
 	res = choose_algo(a, flag);
 	if (!res)
-		return (free(a->stack), free(a), 1);
+		return (write(2,"Error\n", 6), free(a->stack), free(a), 1);
 	print_t_stack(res);
 	return (free(res->ope), free(res), free(a->stack), free(a), 0);
 }
