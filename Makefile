@@ -1,5 +1,4 @@
-CC			= cc
-CFLAGS		= -Wextra -Wall -Werror -g
+CFLAGS		= -Wextra -Wall -Werror -MD --save-temps
 NAME		= push_swap
 SRCS		= main.c compute.c simple_algorithm.c mid_algo.c complex_algo.c \
 			  bucket.c init.c check_input.c \
@@ -8,9 +7,12 @@ SRCS		= main.c compute.c simple_algorithm.c mid_algo.c complex_algo.c \
 			  ft_printf.c ft_printf_utils1.c ft_printf_utils2.c \
 			  display.c
 OBJS		= $(SRCS:.c=.o)
+DEPS		= $(OBJS:.o=.d)
 HEADERS		= push_swap.h stack.h operators.h result.h ft_printf.h
 
 all: $(NAME)
+
+-include $(DEPS)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
