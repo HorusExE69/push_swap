@@ -12,6 +12,7 @@
 
 #include "push_swap.h"
 
+/*
 static char	*ft_strcpy(char *dest, const char *src)
 {
 	size_t	i;
@@ -24,7 +25,8 @@ static char	*ft_strcpy(char *dest, const char *src)
 	}
 	dest[i] = '\0';
 	return (dest);
-}
+} 
+
 
 static void	ft_strsfree(char **strs)
 {
@@ -40,3 +42,5 @@ static void	ft_strsfree(char **strs)
 	}
 	free(strs);
 }
+
+*/

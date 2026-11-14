@@ -63,7 +63,7 @@ int	ft_print_unsigned(unsigned int n)
 	return (count);
 }
 
-int	ft_print_hex(unsigned long n, int upper)
+int	ft_print_hex(unsigned long long n, int upper)
 {
 	char	*base;
 	int		count;
