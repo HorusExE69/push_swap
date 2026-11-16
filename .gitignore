@@ -3,6 +3,7 @@ en.subject.pdf
 push_swap
 testeur.py
 .vscode/
+push_swap_runner
 imgui.ini
 
 *.o
