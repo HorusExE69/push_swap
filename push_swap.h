@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: habretag <habretag@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: esaillan <esaillan@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 11:19:12 by habretag          #+#    #+#             */
 /*   Updated: 2026/11/13 17:15:36 by habretag         ###   ########lyon.fr   */
@@ -33,6 +33,7 @@ int			check_input(int argc, char **argv);
 void		print_t_stack(t_result *result);
 
 // Utils functions
+void		*ft_realloc(void *ptr, size_t old_size, size_t new_size);
 int			ft_strcmp(char *s1, char *s2);
 void		ft_bzero(void *s, size_t n); // UTILISER DANS CALLOC
 void		*ft_calloc(size_t nmemb, size_t size); // PAS UTILISER
