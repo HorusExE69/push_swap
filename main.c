@@ -6,36 +6,13 @@
 /*   By: habretag <habretag@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 11:17:20 by habretag          #+#    #+#             */
-/*   Updated: 2026/11/16 13:58:17 by habretag         ###   ########lyon.fr   */
+/*   Updated: 2026/11/16 15:37:05 by habretag         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "ft_printf.h"
 #include <unistd.h>
-
-static t_stack	*check_no_flags(int argc, char **argv)
-{
-	int		i;
-	t_stack	*a;
-
-	i = 0;
-	a = malloc(sizeof(t_stack));
-	if (!a)
-		return (NULL);
-	a->size = argc;
-	a->stack = malloc(sizeof(int) * argc);
-	if (!a->stack)
-		return (free(a), NULL);
-	while (i < argc)
-	{
-		if (!ft_isnumber(argv[i]))
-			return (free(a->stack), free(a), NULL);
-		a->stack[i] = ft_atoi(argv[i]);
-		i++;
-	}
-	return (a);
-}
 
 static t_stack	*check_flags(int argc, char **argv, int *flag, int *bench)
 {

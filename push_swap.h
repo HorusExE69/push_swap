@@ -6,7 +6,7 @@
 /*   By: habretag <habretag@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 11:19:12 by habretag          #+#    #+#             */
-/*   Updated: 2026/11/16 13:59:23 by habretag         ###   ########lyon.fr   */
+/*   Updated: 2026/11/16 15:37:26 by habretag         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void		collect_stack(t_stack *a, t_stack *b, t_result *res);
 int			get_max_index(t_stack *b);
 int			check_input(int argc, char **argv);
 void		bench_report(t_result *res, float disorder, int flag);
+t_stack		*check_no_flags(int argc, char **argv);
 
 // Display Functions
 void		print_t_stack(t_result *result);

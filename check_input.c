@@ -68,3 +68,26 @@ int	check_input(int argc, char **argv)
 	}
 	return (1);
 }
+
+t_stack	*check_no_flags(int argc, char **argv)
+{
+	int		i;
+	t_stack	*a;
+
+	i = 0;
+	a = malloc(sizeof(t_stack));
+	if (!a)
+		return (NULL);
+	a->size = argc;
+	a->stack = malloc(sizeof(int) * argc);
+	if (!a->stack)
+		return (free(a), NULL);
+	while (i < argc)
+	{
+		if (!ft_isnumber(argv[i]))
+			return (free(a->stack), free(a), NULL);
+		a->stack[i] = ft_atoi(argv[i]);
+		i++;
+	}
+	return (a);
+}

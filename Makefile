@@ -7,6 +7,9 @@ SRCS		= main.c compute.c simple_algorithm.c mid_algo.c complex_algo.c bench.c \
 			  ft_printf.c ft_printf_utils1.c ft_printf_utils2.c \
 			  display.c
 OBJS		= $(SRCS:.c=.o)
+BONUS_SRCS	= checker.c
+BONUS_OBJS	= $(BONUS_SRCS:.c=.o)
+CHECKER		= checker
 HEADERS		= push_swap.h stack.h operators.h result.h ft_printf.h
 
 all: $(NAME)
@@ -18,11 +21,16 @@ $(NAME): $(OBJS)
 	$(CC) -c $(CFLAGS) $< -o $@
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(CHECKER)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+bonus: $(CHECKER)
+
+$(CHECKER): $(BONUS_OBJS) $(filter-out main.o,$(OBJS))
+	$(CC) $(CFLAGS) $^ -o $@
+
+.PHONY: all clean fclean re bonus

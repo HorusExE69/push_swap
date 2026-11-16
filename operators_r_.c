@@ -35,5 +35,10 @@ t_op_code	ft_rb(t_stack *b)
 
 t_op_code	ft_rr(t_stack *a, t_stack *b)
 {
-	return (ft_ra(a) == GOOD || ft_rb(b) == GOOD);
+	t_op_code	res_a;
+	t_op_code	res_b;
+
+	res_a = ft_ra(a);
+	res_b = ft_rb(b);
+	return (res_a == GOOD || res_b == GOOD);
 }

@@ -32,5 +32,10 @@ t_op_code	ft_sb(t_stack *b)
 
 t_op_code	ft_ss(t_stack *a, t_stack *b)
 {
-	return (ft_sa(a) == GOOD || ft_sb(b) == GOOD);
+	t_op_code	res_a;
+	t_op_code	res_b;
+
+	res_a = ft_sa(a);
+	res_b = ft_sb(b);
+	return (res_a == GOOD || res_b == GOOD);
 }
