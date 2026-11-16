@@ -45,7 +45,7 @@ t_result	*init_result(void)
 	res = malloc(sizeof(t_result));
 	if (!res)
 		return (NULL);
-	res->ope = NULL;
-	res->nb = 0;
+	res->operations = NULL;
+	res->operation_count = 0;
 	return (res);
 }

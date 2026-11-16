@@ -56,7 +56,7 @@ void	push_bucket(t_stack *a, t_stack *b, t_result *res,
 	int	count;
 	int	pushed;
 
-	j = res->nb;
+	j = res->operation_count;
 	count = count_bucket(a, bucket);
 	pushed = 0;
 	while (pushed < count)

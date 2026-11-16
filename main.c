@@ -92,5 +92,5 @@ int	main(int argc, char **argv)
 	if (!res)
 		return (write(2, "Error\n", 6), free(a->stack), free(a), 1);
 	print_t_stack(res);
-	return (free(res->ope), free(res), free(a->stack), free(a), 0);
+	return (free(res->operations), free(res), free(a->stack), free(a), 0);
 }

@@ -58,8 +58,8 @@ static t_result	*bubble_sort(t_stack *a)
 		ft_operator(a, b, RA);
 		ft_incr(res, &j, RA);
 	}
-	if (res->nb < 0)
-		return (free(res->ope), free(res), free(b->stack), free(b), NULL);
+	if (res->operation_count < 0)
+		return (free(res->operations), free(res), free(b->stack), free(b), NULL);
 	return (free(b->stack), free(b), res);
 }
 

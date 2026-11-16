@@ -41,9 +41,9 @@ void	print_t_stack(t_result *res)
 	if (!res)
 		return ;
 	i = 0;
-	while (i < res->nb)
+	while (i < res->operation_count)
 	{
-		ft_printf("%s\n", ft_t_operators_to_str(res->ope[i]));
+		ft_printf("%s\n", ft_t_operators_to_str(res->operations[i]));
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: esaillan <esaillan@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 14:30:53 by habretag          #+#    #+#             */
-/*   Updated: 2026/11/13 11:33:45 by esaillan         ###   ########lyon.fr   */
+/*   Updated: 2026/11/16 14:05:08 by esaillan         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 typedef struct s_result
 {
-	int			nb;
-	t_operators	*ope;
+	int			operation_count;
+	t_operators	*operations;
 }	t_result;
 
 #endif

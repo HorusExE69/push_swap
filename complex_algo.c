@@ -20,7 +20,7 @@ static void	sort_bit(t_stack *a, t_stack *b, t_result *res, int bit)
 
 	count = a->size;
 	i = 0;
-	index = res->nb;
+	index = res->operation_count;
 	while (i++ < count)
 	{
 		if ((a->stack[0] >> bit) & 1)
@@ -65,8 +65,8 @@ static t_result	*radix_sort(t_stack *a)
 	bit = 0;
 	while ((a->size - 1) >> bit)
 		sort_bit(rank_a, b, res, bit++);
-	if (res->nb < 0)
-		return (free(res->ope), free(res), free(b->stack), free(b),
+	if (res->operation_count < 0)
+		return (free(res->operations), free(res), free(b->stack), free(b),
 			free(rank_a->stack), free(rank_a), NULL);
 	return (free(b->stack), free(b), free(rank_a->stack),
 		free(rank_a), res);

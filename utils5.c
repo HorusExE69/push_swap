@@ -6,7 +6,7 @@
 /*   By: esaillan <esaillan@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 14:46:36 by habretag          #+#    #+#             */
-/*   Updated: 2026/11/13 12:05:21 by esaillan         ###   ########lyon.fr   */
+/*   Updated: 2026/11/13 15:51:17 by esaillan         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	collect_stack(t_stack *a, t_stack *b, t_result *res)
 {
 	int	j;
 
-	j = res->nb;
+	j = res->operation_count;
 	while (b->size > 0)
 	{
 		rotate_max_to_top(b, res, &j);
