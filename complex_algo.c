@@ -58,13 +58,16 @@ static t_result	*radix_sort(t_stack *a)
 	b = init_stack_b(a->size);
 	if (!b)
 		return (free(rank_a->stack), free(rank_a), NULL);
-	res = init_result(a->size);
+	res = init_result();
 	if (!res)
 		return (free(b->stack), free(b), free(rank_a->stack),
 			free(rank_a), NULL);
 	bit = 0;
 	while ((a->size - 1) >> bit)
 		sort_bit(rank_a, b, res, bit++);
+	if (res->nb < 0)
+		return (free(res->ope), free(res), free(b->stack), free(b),
+			free(rank_a->stack), free(rank_a), NULL);
 	return (free(b->stack), free(b), free(rank_a->stack),
 		free(rank_a), res);
 }

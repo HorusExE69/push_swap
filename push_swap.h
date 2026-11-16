@@ -6,7 +6,7 @@
 /*   By: esaillan <esaillan@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 11:19:12 by habretag          #+#    #+#             */
-/*   Updated: 2026/11/13 17:15:36 by habretag         ###   ########lyon.fr   */
+/*   Updated: 2026/11/16 14:02:50 by esaillan         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void		push_bucket(t_stack *a, t_stack *b, t_result *res, t_bucket bucket);
 // Init functions
 t_stack		*init_rank_stack(int *normalized, int size);
 t_stack		*init_stack_b(int capacity);
-t_result	*init_result(int size);
+t_result	*init_result(void);
 
 // Stack Utils
 int			*normalize_stack(t_stack *a);

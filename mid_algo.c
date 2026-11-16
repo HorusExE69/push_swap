@@ -51,12 +51,15 @@ t_result	*medium_algo(t_stack *a)
 	b = init_stack_b(a->size);
 	if (!b)
 		return (free(rank_a->stack), free(rank_a), NULL);
-	res = init_result(a->size);
+	res = init_result();
 	if (!res)
 		return (free(rank_a->stack), free(rank_a),
 			free(b->stack), free(b), NULL);
 	distribute_buckets(rank_a, b, res);
 	collect_stack(rank_a, b, res);
+	if (res->nb < 0)
+		return (free(res->ope), free(res), free(rank_a->stack), free(rank_a),
+			free(b->stack), free(b), NULL);
 	free(rank_a->stack);
 	free(rank_a);
 	free(b->stack);

@@ -6,7 +6,7 @@
 /*   By: esaillan <esaillan@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 14:47:06 by esaillan          #+#    #+#             */
-/*   Updated: 2026/11/13 13:47:54 by esaillan         ###   ########lyon.fr   */
+/*   Updated: 2026/11/16 14:02:39 by esaillan         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static t_result	*bubble_sort(t_stack *a)
 	b = init_stack_b(a->size);
 	if (!b)
 		return (NULL);
-	res = init_result(a->size);
+	res = init_result();
 	if (!res)
 		return (free(b->stack), free(b), NULL);
 	j = loop(a, b, res);
@@ -58,7 +58,8 @@ static t_result	*bubble_sort(t_stack *a)
 		ft_operator(a, b, RA);
 		ft_incr(res, &j, RA);
 	}
-	res->nb = j;
+	if (res->nb < 0)
+		return (free(res->ope), free(res), free(b->stack), free(b), NULL);
 	return (free(b->stack), free(b), res);
 }
 

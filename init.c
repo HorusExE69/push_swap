@@ -38,21 +38,14 @@ t_stack	*init_stack_b(int capacity)
 	return (b);
 }
 
-t_result	*init_result(int size)
+t_result	*init_result(void)
 {
 	t_result	*res;
-	int			capacity;
 
 	res = malloc(sizeof(t_result));
 	if (!res)
 		return (NULL);
-	capacity = size * size + 2 * size;
-	res->ope = calloc((size_t)capacity, sizeof(t_operators));
-	if (!res->ope)
-	{
-		free(res);
-		return (NULL);
-	}
+	res->ope = NULL;
 	res->nb = 0;
 	return (res);
 }
