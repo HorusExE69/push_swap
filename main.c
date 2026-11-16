@@ -6,7 +6,7 @@
 /*   By: habretag <habretag@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 11:17:20 by habretag          #+#    #+#             */
-/*   Updated: 2026/11/13 17:10:30 by habretag         ###   ########lyon.fr   */
+/*   Updated: 2026/11/16 13:58:17 by habretag         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,32 @@ static t_stack	*check_no_flags(int argc, char **argv)
 	return (a);
 }
 
-static t_stack	*check_flags(int argc, char **argv, int *flag)
+static t_stack	*check_flags(int argc, char **argv, int *flag, int *bench)
 {
-	if (ft_strcmp(argv[1], "--simple") == 0)
-		*flag = 0;
-	else if (ft_strcmp(argv[1], "--medium") == 0)
-		*flag = 1;
-	else if (ft_strcmp(argv[1], "--complex") == 0)
-		*flag = 2;
-	else if (ft_strcmp(argv[1], "--adaptative") == 0)
-		*flag = 3;
-	else
+	int	start;
+
+	start = 1;
+	while (argv[start] && argv[start][0] == '-' && argv[start][1] == '-')
+	{
+		if (ft_strcmp(argv[start], "--bench") == 0)
+			*bench = 1;
+		else if (*flag != -1)
+			return (NULL);
+		else if (ft_strcmp(argv[start], "--simple") == 0)
+			*flag = 0;
+		else if (ft_strcmp(argv[start], "--medium") == 0)
+			*flag = 1;
+		else if (ft_strcmp(argv[start], "--complex") == 0)
+			*flag = 2;
+		else if (ft_strcmp(argv[start], "--adaptive") == 0)
+			*flag = 3;
+		else
+			return (NULL);
+		start++;
+	}
+	if (!argv[start] || !check_input(argc - start, argv + start))
 		return (NULL);
-	if (!argv[2])
-		return (NULL);
-	return (check_no_flags(argc - 2, argv + 2));
+	return (check_no_flags(argc - start, argv + start));
 }
 
 static t_result	*choose_algo(t_stack *a, int flag)
@@ -62,35 +73,52 @@ static t_result	*choose_algo(t_stack *a, int flag)
 		return (medium_algo(a));
 	if (flag == 2)
 		return (complex_algo(a));
-	if (flag == 3)
-		return (compute_algo(a));
-	return (NULL);
+	return (compute_algo(a));
+}
+
+static int	run(t_stack *a, int flag, int bench)
+{
+	t_result	*res;
+	float		disorder;
+
+	disorder = 0.0f;
+	if (bench)
+		disorder = compute_disorder(*a);
+	if (is_sorted(a))
+	{
+		if (bench)
+			bench_report(NULL, disorder, flag);
+		return (0);
+	}
+	res = choose_algo(a, flag);
+	if (!res)
+		return (1);
+	print_t_stack(res);
+	if (bench)
+		bench_report(res, disorder, flag);
+	return (free(res->operations), free(res), 0);
 }
 
 int	main(int argc, char **argv)
 {
 	int			flag;
+	int			bench;
 	t_stack		*a;
-	t_result	*res;
 
-	flag = 3;
+	flag = -1;
+	bench = 0;
 	a = NULL;
 	if (argc < 2)
-		return (write(2, "Error\n", 6), 1);
-	if (argv[1][0] == '-' && argv[1][1] == '-' &&
-			check_input(argc - 2, argv + 2))
-		a = check_flags(argc, argv, &flag);
+		return (0);
+	if (argv[1][0] == '-' && argv[1][1] == '-')
+		a = check_flags(argc, argv, &flag, &bench);
 	else if (check_input(argc - 1, argv + 1))
 		a = check_no_flags(argc - 1, argv + 1);
 	if (!a)
 		return (write(2, "Error\n", 6), 1);
 	if (!a->stack)
 		return (write(2, "Error\n", 6), free(a), 1);
-	if (is_sorted(a))
-		return (free(a->stack), free(a), 0);
-	res = choose_algo(a, flag);
-	if (!res)
+	if (run(a, flag, bench))
 		return (write(2, "Error\n", 6), free(a->stack), free(a), 1);
-	print_t_stack(res);
-	return (free(res->operations), free(res), free(a->stack), free(a), 0);
+	return (free(a->stack), free(a), 0);
 }

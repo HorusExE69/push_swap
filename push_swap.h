@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esaillan <esaillan@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: habretag <habretag@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 11:19:12 by habretag          #+#    #+#             */
-/*   Updated: 2026/11/16 14:02:50 by esaillan         ###   ########lyon.fr   */
+/*   Updated: 2026/11/16 13:59:23 by habretag         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,16 @@
 
 // Main functions
 t_result	*compute_algo(t_stack *a);
+float		compute_disorder(t_stack a);
 t_result	*simple_algo(t_stack *a);
 t_result	*medium_algo(t_stack *a);
 t_result	*complex_algo(t_stack *a);
 void		collect_stack(t_stack *a, t_stack *b, t_result *res);
 int			get_max_index(t_stack *b);
 int			check_input(int argc, char **argv);
+void		bench_report(t_result *res, float disorder, int flag);
 
-// Test
+// Display Functions
 void		print_t_stack(t_result *result);
 
 // Utils functions

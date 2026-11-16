@@ -1,6 +1,6 @@
 CFLAGS		= -Wextra -Wall -Werror -g3
 NAME		= push_swap
-SRCS		= main.c compute.c simple_algorithm.c mid_algo.c complex_algo.c \
+SRCS		= main.c compute.c simple_algorithm.c mid_algo.c complex_algo.c bench.c \
 			  bucket.c init.c check_input.c \
 			  utils.c utils2.c utils3.c utils4.c utils5.c ft_realloc.c \
 			  operators_s_.c operators_p_.c operators_r_.c operators_rr_.c operators.c \

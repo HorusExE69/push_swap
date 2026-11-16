@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   compute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esaillan <esaillan@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: habretag <habretag@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 11:13:26 by habretag          #+#    #+#             */
-/*   Updated: 2026/11/13 14:16:13 by esaillan         ###   ########lyon.fr   */
+/*   Updated: 2026/11/16 13:39:25 by habretag         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static float	compute_disorder(t_stack a)
+float	compute_disorder(t_stack a)
 {
 	int	mis;
 	int	tot_pairs;
@@ -21,6 +21,8 @@ static float	compute_disorder(t_stack a)
 
 	mis = 0;
 	tot_pairs = 0;
+	if (a.size < 2)
+		return (0.0f);
 	i = 0;
 	while (i < a.size - 1)
 	{
