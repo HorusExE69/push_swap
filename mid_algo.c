@@ -6,7 +6,7 @@
 /*   By: habretag <habretag@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 10:06:32 by habretag          #+#    #+#             */
-/*   Updated: 2026/11/12 17:18:40 by habretag         ###   ########lyon.fr   */
+/*   Updated: 2026/11/18 17:59:43 by habretag         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,8 @@ t_result	*medium_algo(t_stack *a)
 	distribute_buckets(rank_a, b, res);
 	collect_stack(rank_a, b, res);
 	if (res->operation_count < 0)
-		return (free(res->operations), free(res), free(rank_a->stack), free(rank_a),
+		return (free(res->operations), free(res),
+			free(rank_a->stack), free(rank_a),
 			free(b->stack), free(b), NULL);
-	free(rank_a->stack);
-	free(rank_a);
-	free(b->stack);
-	free(b);
-	return (res);
+	return (free(rank_a->stack), free(rank_a), free(b->stack), free(b), res);
 }

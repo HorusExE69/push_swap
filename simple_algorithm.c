@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simple_algorithm.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esaillan <esaillan@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: habretag <habretag@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 14:47:06 by esaillan          #+#    #+#             */
-/*   Updated: 2026/11/16 14:02:39 by esaillan         ###   ########lyon.fr   */
+/*   Updated: 2026/11/18 17:57:25 by habretag         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ static t_result	*bubble_sort(t_stack *a)
 		ft_incr(res, &j, RA);
 	}
 	if (res->operation_count < 0)
-		return (free(res->operations), free(res), free(b->stack), free(b), NULL);
+		return (free(res->operations), free(res),
+			free(b->stack), free(b), NULL);
 	return (free(b->stack), free(b), res);
 }
 
