@@ -6,14 +6,13 @@
 /*   By: habretag <habretag@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 11:19:12 by habretag          #+#    #+#             */
-/*   Updated: 2026/11/16 15:37:26 by habretag         ###   ########lyon.fr   */
+/*   Updated: 2026/11/22 11:07:49 by habretag         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdio.h>
 # include <stdlib.h>
 # include "stack.h"
 # include "operators.h"
@@ -26,11 +25,15 @@ float		compute_disorder(t_stack a);
 t_result	*simple_algo(t_stack *a);
 t_result	*medium_algo(t_stack *a);
 t_result	*complex_algo(t_stack *a);
-void		collect_stack(t_stack *a, t_stack *b, t_result *res);
-int			get_max_index(t_stack *b);
-int			check_input(int argc, char **argv);
+t_stack		*build_stack(int argc, char **argv);
 void		bench_report(t_result *res, float disorder, int flag);
-t_stack		*check_no_flags(int argc, char **argv);
+char		**parse_args(int argc, char **argv, int *count);
+
+// Free Functions
+void		free_stack(t_stack *s);
+char		**free_strs(char **strs);
+void		free_result(t_result *res);
+t_result	*clean_exit(t_stack *a, t_stack *b, t_result *res, t_result *ret);
 
 // Display Functions
 void		print_t_stack(t_result *result);

@@ -6,7 +6,7 @@
 /*   By: habretag <habretag@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/16 15:26:50 by habretag          #+#    #+#             */
-/*   Updated: 2026/11/16 16:15:00 by habretag         ###   ########lyon.fr   */
+/*   Updated: 2026/11/22 10:24:55 by habretag         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,7 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		return (0);
-	if (!check_input(argc - 1, argv + 1))
-		return (checker_exit(NULL, NULL, 1));
-	a = check_no_flags(argc - 1, argv + 1);
+	a = build_stack(argc - 1, argv + 1);
 	if (!a || !a->stack)
 		return (checker_exit(a, NULL, 1));
 	b = init_stack_b(a->size);

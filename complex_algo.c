@@ -54,22 +54,17 @@ static t_result	*radix_sort(t_stack *a)
 		return (NULL);
 	rank_a = init_rank_stack(normalized, a->size);
 	if (!rank_a)
-		return (free(normalized), NULL);
+		return (NULL);
 	b = init_stack_b(a->size);
-	if (!b)
-		return (free(rank_a->stack), free(rank_a), NULL);
 	res = init_result();
-	if (!res)
-		return (free(b->stack), free(b), free(rank_a->stack),
-			free(rank_a), NULL);
+	if (!b || !res)
+		return (clean_exit(rank_a, b, res, NULL));
 	bit = 0;
 	while ((a->size - 1) >> bit)
 		sort_bit(rank_a, b, res, bit++);
 	if (res->operation_count < 0)
-		return (free(res->operations), free(res), free(b->stack), free(b),
-			free(rank_a->stack), free(rank_a), NULL);
-	return (free(b->stack), free(b), free(rank_a->stack),
-		free(rank_a), res);
+		return (clean_exit(rank_a, b, res, NULL));
+	return (clean_exit(rank_a, b, res, res));
 }
 
 t_result	*complex_algo(t_stack *a)

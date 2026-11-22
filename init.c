@@ -18,7 +18,10 @@ t_stack	*init_rank_stack(int *normalized, int size)
 
 	a = malloc(sizeof(t_stack));
 	if (!a)
+	{
+		free(normalized);
 		return (NULL);
+	}
 	a->stack = normalized;
 	a->size = size;
 	return (a);
@@ -33,7 +36,10 @@ t_stack	*init_stack_b(int capacity)
 		return (NULL);
 	b->stack = malloc(sizeof(int) * capacity);
 	if (!b->stack)
-		return (free(b), NULL);
+	{
+		free(b);
+		return (NULL);
+	}
 	b->size = 0;
 	return (b);
 }

@@ -6,7 +6,7 @@
 /*   By: habretag <habretag@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 13:26:46 by habretag          #+#    #+#             */
-/*   Updated: 2026/11/13 17:13:45 by habretag         ###   ########lyon.fr   */
+/*   Updated: 2026/11/22 10:49:34 by habretag         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	is_duplicate(int i, char **argv)
 	return (0);
 }
 
-int	check_input(int argc, char **argv)
+static int	check_input(int argc, char **argv)
 {
 	int	i;
 
@@ -69,7 +69,7 @@ int	check_input(int argc, char **argv)
 	return (1);
 }
 
-t_stack	*check_no_flags(int argc, char **argv)
+static t_stack	*check_no_flags(int argc, char **argv)
 {
 	int		i;
 	t_stack	*a;
@@ -81,13 +81,30 @@ t_stack	*check_no_flags(int argc, char **argv)
 	a->size = argc;
 	a->stack = malloc(sizeof(int) * argc);
 	if (!a->stack)
-		return (free(a), NULL);
+	{
+		free(a);
+		return (NULL);
+	}
 	while (i < argc)
 	{
-		if (!ft_isnumber(argv[i]))
-			return (free(a->stack), free(a), NULL);
 		a->stack[i] = ft_atoi(argv[i]);
 		i++;
 	}
+	return (a);
+}
+
+t_stack	*build_stack(int argc, char **argv)
+{
+	char	**args;
+	int		count;
+	t_stack	*a;
+
+	args = parse_args(argc, argv, &count);
+	if (!args)
+		return (NULL);
+	a = NULL;
+	if (check_input(count, args))
+		a = check_no_flags(count, args);
+	free_strs(args);
 	return (a);
 }

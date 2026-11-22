@@ -6,7 +6,7 @@
 /*   By: habretag <habretag@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 11:17:20 by habretag          #+#    #+#             */
-/*   Updated: 2026/11/16 15:37:05 by habretag         ###   ########lyon.fr   */
+/*   Updated: 2026/11/22 11:09:57 by habretag         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ static t_stack	*check_flags(int argc, char **argv, int *flag, int *bench)
 			return (NULL);
 		start++;
 	}
-	if (!argv[start] || !check_input(argc - start, argv + start))
+	if (!argv[start])
 		return (NULL);
-	return (check_no_flags(argc - start, argv + start));
+	return (build_stack(argc - start, argv + start));
 }
 
 static t_result	*choose_algo(t_stack *a, int flag)
@@ -73,7 +73,15 @@ static int	run(t_stack *a, int flag, int bench)
 	print_t_stack(res);
 	if (bench)
 		bench_report(res, disorder, flag);
-	return (free(res->operations), free(res), 0);
+	free_result(res);
+	return (0);
+}
+
+static int	error_exit(t_stack *a)
+{
+	free_stack(a);
+	write(2, "Error\n", 6);
+	return (1);
 }
 
 int	main(int argc, char **argv)
@@ -89,13 +97,10 @@ int	main(int argc, char **argv)
 		return (0);
 	if (argv[1][0] == '-' && argv[1][1] == '-')
 		a = check_flags(argc, argv, &flag, &bench);
-	else if (check_input(argc - 1, argv + 1))
-		a = check_no_flags(argc - 1, argv + 1);
-	if (!a)
-		return (write(2, "Error\n", 6), 1);
-	if (!a->stack)
-		return (write(2, "Error\n", 6), free(a), 1);
-	if (run(a, flag, bench))
-		return (write(2, "Error\n", 6), free(a->stack), free(a), 1);
-	return (free(a->stack), free(a), 0);
+	else
+		a = build_stack(argc - 1, argv + 1);
+	if (!a || !a->stack || run(a, flag, bench))
+		return (error_exit(a));
+	free_stack(a);
+	return (0);
 }

@@ -47,19 +47,14 @@ t_result	*medium_algo(t_stack *a)
 		return (NULL);
 	rank_a = init_rank_stack(normalized, a->size);
 	if (!rank_a)
-		return (free(normalized), NULL);
+		return (NULL);
 	b = init_stack_b(a->size);
-	if (!b)
-		return (free(rank_a->stack), free(rank_a), NULL);
 	res = init_result();
-	if (!res)
-		return (free(rank_a->stack), free(rank_a),
-			free(b->stack), free(b), NULL);
+	if (!b || !res)
+		return (clean_exit(rank_a, b, res, NULL));
 	distribute_buckets(rank_a, b, res);
 	collect_stack(rank_a, b, res);
 	if (res->operation_count < 0)
-		return (free(res->operations), free(res),
-			free(rank_a->stack), free(rank_a),
-			free(b->stack), free(b), NULL);
-	return (free(rank_a->stack), free(rank_a), free(b->stack), free(b), res);
+		return (clean_exit(rank_a, b, res, NULL));
+	return (clean_exit(rank_a, b, res, res));
 }

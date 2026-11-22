@@ -6,7 +6,7 @@
 /*   By: habretag <habretag@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/16 13:28:49 by habretag          #+#    #+#             */
-/*   Updated: 2026/11/16 14:02:49 by habretag         ###   ########lyon.fr   */
+/*   Updated: 2026/11/22 11:34:42 by habretag         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	put_str_fd(int fd, char *s)
 	len = 0;
 	while (s[len])
 		len++;
-	(void)write(fd, s, len);
+	write(fd, s, len);
 }
 
 static void	put_nbr_fd(int fd, int nb)
@@ -29,13 +29,13 @@ static void	put_nbr_fd(int fd, int nb)
 
 	if (nb < 0)
 	{
-		(void)write(fd, "-", 1);
+		write(fd, "-", 1);
 		nb = -nb;
 	}
 	if (nb > 9)
 		put_nbr_fd(fd, nb / 10);
 	digit = nb % 10 + '0';
-	(void)write(fd, &digit, 1);
+	write(fd, &digit, 1);
 }
 
 static void	print_header(float disorder, int flag)

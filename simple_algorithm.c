@@ -45,11 +45,9 @@ static t_result	*bubble_sort(t_stack *a)
 	int			j;
 
 	b = init_stack_b(a->size);
-	if (!b)
-		return (NULL);
 	res = init_result();
-	if (!res)
-		return (free(b->stack), free(b), NULL);
+	if (!b || !res)
+		return (clean_exit(NULL, b, res, NULL));
 	j = loop(a, b, res);
 	while (b->size > 0)
 	{
@@ -59,9 +57,8 @@ static t_result	*bubble_sort(t_stack *a)
 		ft_incr(res, &j, RA);
 	}
 	if (res->operation_count < 0)
-		return (free(res->operations), free(res),
-			free(b->stack), free(b), NULL);
-	return (free(b->stack), free(b), res);
+		return (clean_exit(NULL, b, res, NULL));
+	return (clean_exit(NULL, b, res, res));
 }
 
 t_result	*simple_algo(t_stack *a)
